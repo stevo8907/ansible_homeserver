@@ -1,0 +1,52 @@
+---
+# tasks file for ./nginx-proxy-manager
+
+- name: create nginx proxy group
+  group:
+    name: "{{ group }}"
+    gid: "{{ gid}}"
+    state: present
+
+- name: create proxy user
+  user:
+    name: "{{ username }}"
+    uid: "{{ uid }}"
+    group: "{{ group }}"
+    create_home: no
+
+- name: docker pull nginx-proxy-manager image
+  community.docker.docker_container:
+    name: npm-image
+    image: "{{ image }}"
+
+- name: create the npm container and start the docker Container
+  docker_container:
+    name: "{{ container }}"
+    image: "{{ image }}"
+    state: started
+    ports:
+      - "{{ http }}:{{ http }}"
+      - "{{ https }}:{{ https }}"
+      - "{{ gui }}:{{ gui }}"
+    env:
+        DB_MYSQL_HOST: "{{ host }}"
+        DB_MYSQL_PORT: "{{ dbport }}"
+      #"{{ USER }}"
+      #"{{ PASSWORD }}"
+      #"{{ NAME }}"
+    #volumes:
+    #  - "{{ config }}"
+    #  - "{{ letsencrypt }}"
+
+### MYSQL DB ###
+
+#- name: create and run the MYSQL DB ##
+#  community.docker.docker_container:
+#    name: "{{ DB-container }}"
+#    image: "{{ DB-image }}"
+#    state: started
+
+      #UID: "{{ uid }}"
+      #GID: "{{ gid }}"
+      #TZ:  "{{ timezone }}"
+#    volumes:

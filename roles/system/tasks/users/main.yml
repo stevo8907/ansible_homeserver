@@ -1,0 +1,30 @@
+---
+- name: add user "{{ username }}"
+  user:
+    name: "{{ username }}"
+    uid: "{{ useruid }}"
+    group: sudo
+    create_home: yes
+
+
+
+- name: create proxy user
+  user:
+    name: proxy
+    uid: "{{ proxyuid }}"
+    group: "{{ proxygid }}"
+    create_home: no
+
+#- name: create bitwarden user
+#  user:
+#    name: bitwarden
+#    uid: {{ proxyuid }}
+#    group: {{ proxygid }}
+#    create_home: no
+
+#- name: create tautulli user
+#  user:
+#    name: tautulli
+#    uid: {{ proxyuid }}
+#    group: {{ proxygid }}
+#    create_home: no

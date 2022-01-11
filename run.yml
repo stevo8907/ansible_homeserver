@@ -1,0 +1,35 @@
+---
+- hosts: Chroma
+  become: yes
+
+  roles:
+      - docker/plex
+      - docker/nginx-proxy-manager
+  
+  
+  #tasks:
+    
+    #- import_tasks: roles/docker/plex/tasks/main.yml
+    #- import_tasks: roles/system/tasks/hostname/main.yml
+    #- import_tasks: roles/system/tasks/essential.yml
+    #- import_tasks: roles/system/tasks/essential packages/main.yml
+    #- import_tasks: roles/sercurity/tasks/set_firewall.yml
+    #- import_tasks: roles/docker/tasks/plex.yml
+    
+    
+    #- import_tasks: roles/base/tasks/main.yml
+    
+    #- import_tasks: roles/system/tasks/groups.yml
+    #- import_tasks: roles/system/tasks/users.yml
+    #
+    #- import_tasks: roles/sercurity/tasks/ssh_sercurity.yml
+    #- import_tasks: roles/sercurity/tasks/firewall.yml
+    #-
+  
+    #- import_tasks: roles/docker-compose/npm/docker-compose.yml
+
+#- hosts: Pihole
+#  become: yes
+#
+#  tasks:
+#    - 

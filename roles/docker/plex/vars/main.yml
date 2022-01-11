@@ -1,0 +1,35 @@
+---
+# vars file for ./plex
+container: "plex"
+username: "plex"
+group: "test"
+uid: "2000"
+gid: "2000"
+image: "linuxserver/plex:latest"
+
+### plex media directory permissions ###
+plex-1: "/srv/plex-1"
+plex-2: "/srv/plex-2"
+plex-3: "/srv/plex-3"
+
+### plex media settings ##
+plex_config: "/srv/server-configs/plex-media-server"
+transcode: "/srv/server-configs/plex-media-server/transcode"
+tv: "/srv/plex-1/TV/"
+tv2: "/srv/plex-2/TV/"
+tv3: "/srv/plex-3/TV/"
+movies_2560: "/srv/plex-1/4K-Movies" 
+movies_2560p-2: "/srv/plex-2/4K-Movies" 
+movies_2560p-3: "/srv/plex-3/4K-Movies" 
+mcu: "/srv/plex-1/MCU"
+mcu2: "/srv/plex-3/MCU"
+HD_movies: "/srv/plex-1/HD-movies"       
+HD_movies2: "2/srv/plex-2/HD-movies"
+HD_movies3: "/srv/plex-3/HD-Movies"
+movies: "/srv/plex-1/movies"
+christmas_movies: "/srv/plex-1/christmas-movies"
+musicals: "/srv/plex-1/musicals"
+anime: "/srv/plex-1/Anime"
+anime2: "/srv/plex-2/Anime"
+kids_movies: "/srv/plex-1/kids-movies"
+music: "/srv/plex-1/music"

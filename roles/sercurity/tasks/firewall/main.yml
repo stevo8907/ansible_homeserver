@@ -1,0 +1,73 @@
+---
+- name: copy firewall rules to main system
+  copy:
+    src: firewall-up
+    dest: /etc/firewall/
+    owner: "{{ username }}"
+    group: root
+
+- name: copy firewall rules to main system
+  copy:
+    src: firewall-save
+    dest: /etc/firewall/
+    owner: "{{ username }}"
+    group: root
+
+
+- name: set firewall-up script to executable
+  file:
+    path: /etc/firewall/firewall-up
+    mode: "+x"
+
+- name: set firewall-save script to executable
+  file:
+    path: /etc/firewall/firewall-save
+    mode: "+x"
+
+#- name: set firewall-down script to executable
+#  file:
+#    path: /etc/firewall/firewall-down
+#    mode: "+x"
+
+- name: set system firewall rules
+  command: /etc/firewall/firewall-up
+
+- name: save system firewall rules
+  command: /etc/firewall/firewall-save
+
+
+
+
+
+
+#- name: Set the policy for the INPUT chain to DROP
+#  ansible.builtin.iptables:
+#    chain: INPUT
+#    policy: DROP
+
+#- name: allow ssh on port "{{ sshport }}"
+#  ansible.builtin.iptables:
+#    chain: INPUT
+#    protocol: tcp
+#    source: 0.0.0.0
+#    destination_port: "{{ sshport }}"
+#    jump: ACCEPT
+
+#- name: denny all output ports
+#  iptables:
+#    chain: OUTPUT
+#    jump: DROP
+
+#- name: denny all forwarding ports
+#  iptables:
+#    chain: FORWARD
+#    jump: DROP
+
+
+#- name: port "{{ HTTP }}"
+#  iptables:
+
+
+#- name: port "{{ HTTPS }}"
+#  iptables:
+  

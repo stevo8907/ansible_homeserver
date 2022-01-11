@@ -1,0 +1,32 @@
+---
+- name: install docker/docker-compose packages
+  package:
+    name: 
+      - docker
+      - docker-compose
+    state: latest
+
+- name: install htop
+  package:
+    name: htop
+    state: latest
+
+- name: install neofetch
+  package:
+    name: neofetch
+    state: latest
+
+- name: install git
+  package:
+    name: git
+    state: latest
+    
+- name: install samba
+  package:
+    name: samba
+    state: latest
+
+- name: install 
+  package:
+    name: iptables-persistent
+    state: latest

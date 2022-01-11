@@ -1,0 +1,8 @@
+---
+
+
+- name: create nginx proxy group
+  group:
+    name: "{{ proxy }}"
+    gid: "{{ proxygid }}"
+    state: present

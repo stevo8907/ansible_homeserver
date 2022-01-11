@@ -1,0 +1,20 @@
+---
+# vars file for ./nginx-proxy-manager
+container: "npm"
+username: "npm"
+group: "npm"
+uid: "2001"
+gid: "2001"
+image: "jc21/nginx-proxy-manager:latest"
+http: "80"
+https: "443"
+gui: "81"
+host: "database"
+dbport: "3306"
+#USER: "DB_MYSQL_USER:_npm"
+#PASSWORD: "DB_MYSQL_PASSWORD:_npm"
+#NAME: "DB_MYSQL_NAME:_npm"
+
+### volumes ##
+config: "/srv/server-configs/proxy-manager/:/data"
+letsencrypt: "/srv/server-configs/letsencrypt:/etc/letsencrypt"

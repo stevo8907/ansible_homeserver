@@ -1,0 +1,38 @@
+---
+- name: Update packages
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+
+
+
+#- name: Enable passwordless sudo for "{{ username }}"
+#  lineinfile:
+#    dest: /etc/sudoers
+#    regexp: "^%wheel"
+#    line: "{{ username }} ALL=(ALL) NOPASSWD: ALL"
+#    validate: "/usr/sbin/visudo -cf %s"
+
+
+
+#- name: git clone firefall
+#  git:
+#    repo: https://github.com/stevo8907/firewallsetup.git
+#    dest: /etc/firewall/
+#    force: yes
+
+
+
+#- name: git clone portainer
+#  git:
+#    repo: https://github.com/stevo8907/portainer.git
+#    dest: /home/steven/portainer
+#    force: yes
+
+#- name: change DIR for portainer
+#  command: cd /home/steven/portainer/
+
+#- name: Create Portainer Docker Container
+#  command: "docker-compose --file {{ portainer }} up -d"
+
