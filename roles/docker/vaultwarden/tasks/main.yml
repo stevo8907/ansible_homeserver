@@ -1,0 +1,19 @@
+---
+# tasks file for vaultwarden
+- name: create "{{ group }}" group
+  group:
+    name: "{{ group }}"
+    gid: "{{ gid}}"
+    state: present
+
+- name: create "{{ username }}" user
+  user:
+    name: "{{ username }}"
+    uid: "{{ uid }}"
+    group: "{{ group }}"
+    create_home: no
+
+- name: docker pull nginx-proxy-manager image
+  community.docker.docker_container:
+    name: vaultwarden-image
+    image: "{{ image }}"

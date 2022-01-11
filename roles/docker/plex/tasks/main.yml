@@ -73,4 +73,6 @@
       - "{{ anime2 }}:/Anime-2:ro"
       - "{{ kids_movies }}:/kids-movies:ro"
       - "{{ music }}:/Music:ro"
+    restart_policy: unless-stopped 
+    
     

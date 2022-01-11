@@ -29,24 +29,37 @@
       - "{{ https }}:{{ https }}"
       - "{{ gui }}:{{ gui }}"
     env:
+        UID: "{{ uid }}"
+        gid: "{{ gid }}"
         DB_MYSQL_HOST: "{{ host }}"
         DB_MYSQL_PORT: "{{ dbport }}"
-      #"{{ USER }}"
-      #"{{ PASSWORD }}"
-      #"{{ NAME }}"
-    #volumes:
-    #  - "{{ config }}"
-    #  - "{{ letsencrypt }}"
+        DB_MYSQL_USER: "{{ USER }}"
+        DB_MYSQL_PASSWORD: "{{ PASSWORD }}"
+        DB_MYSQL_NAME: "{{ NAME }}"
+    volumes:
+      - "{{ config }}"
+      - "{{ letsencrypt }}"
 
 ### MYSQL DB ###
 
-#- name: create and run the MYSQL DB ##
-#  community.docker.docker_container:
-#    name: "{{ DB-container }}"
-#    image: "{{ DB-image }}"
-#    state: started
+- name: docker pull "{{ DB_container }}" image
+  community.docker.docker_container:
+    name: npm-DB-image
+    image: "{{ DB_image }}"
 
-      #UID: "{{ uid }}"
-      #GID: "{{ gid }}"
-      #TZ:  "{{ timezone }}"
-#    volumes:
+- name: create and run the MYSQL DB ##
+  community.docker.docker_container:
+    name: "{{ DB_container }}"
+    image: "{{ DB_image }}"
+    state: started
+    env:
+        UID: "{{ uid }}"
+        GID: "{{ gid }}"
+        TZ:  "{{ timezone }}"
+        MYSQL_ROOT_PASSWORD: "{{ SQL_DB_ROOT_PASSWORD }}"
+        MYSQL_DATABASE: "{{ SQL_DATABASE }}"
+        MYSQL_USER: "{{ USER }}"
+        MYSQL_PASSWORD: "{{ PASSWORD }}"
+    volumes:
+      - "{{ mysql_config }}"
+    restart_policy: unless-stopped 

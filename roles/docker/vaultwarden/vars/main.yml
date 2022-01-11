@@ -1,0 +1,8 @@
+---
+# vars file for vaultwarden
+container: "vaultwarden"
+username: "vaultwarden"
+group: "vaultwarden"
+uid: "2002"
+gid: "2002"
+image: "vaultwarden/server"

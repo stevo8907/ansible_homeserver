@@ -11,10 +11,18 @@ https: "443"
 gui: "81"
 host: "database"
 dbport: "3306"
-#USER: "DB_MYSQL_USER:_npm"
-#PASSWORD: "DB_MYSQL_PASSWORD:_npm"
-#NAME: "DB_MYSQL_NAME:_npm"
+USER: "npm"
+PASSWORD: "npm"
+NAME: "npm"
+
+### MYSQL files ###
+
+DB_container: "npm_database"
+DB_image: "jc21/mariadb-aria:latest"
+SQL_DB_ROOT_PASSWORD: "npm"
+SQL_DATABASE: "npm"
 
 ### volumes ##
 config: "/srv/server-configs/proxy-manager/:/data"
 letsencrypt: "/srv/server-configs/letsencrypt:/etc/letsencrypt"
+mysql_config: "/srv/server-configs/mysql:/var/lib/mysql"
